@@ -26,8 +26,6 @@
 
 #include <IL/OMX_Video.h>
 
-#include "utils/BitstreamConverter.h"
-
 #include "OMXClock.h"
 
 #include "guilib/Geometry.h"
@@ -86,13 +84,13 @@ protected:
   uint8_t           *m_extradata;
   int               m_extrasize;
 
-  CBitstreamConverter   *m_converter;
   bool              m_video_convert;
   std::string       m_video_codec_name;
 
   bool              m_deinterlace;
   bool              m_hdmi_clock_sync;
   bool              m_first_frame;
+  bool              m_contains_valid_pts;
 
   bool NaluFormatStartCodes(enum CodecID codec, uint8_t *in_extradata, int in_extrasize);
 };
