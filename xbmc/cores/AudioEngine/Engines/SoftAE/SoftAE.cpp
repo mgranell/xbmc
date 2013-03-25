@@ -609,6 +609,14 @@ void CSoftAE::VerifySoundDevice(std::string& device, bool passthrough)
 
       if (device == deviceName)
         return;
+
+	  /* Allow user to specify extra display name in advanced settings, to deal with case where WSAPI
+	     generates new GUID each re-boot, e.g. Intel HDMI Audio */
+	  if (device == devInfo.m_displayNameExtra)
+	  {
+		  device = deviceName;
+  		  return;
+	  }
     }
   }
 
